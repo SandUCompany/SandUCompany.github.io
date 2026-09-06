@@ -1,13 +1,13 @@
   // Renders available per upholstery material. First entry is the default hero shot.
   const RENDERS = {
-    "Yellow Linen": [
+    "Sunlit Linen": [
       ["assets/renders/yellow-linen-main.jpg",  "Angled view"],
       ["assets/renders/yellow-linen-angle.jpg", "Rear three-quarter"],
       ["assets/renders/yellow-linen-top.jpg",   "Top view"],
       ["assets/renders/yellow-linen-seat.jpg",  "Seat & power outlet"],
       ["assets/renders/yellow-linen-niche.jpg", "Lit shelf niche"]
     ],
-    "Blue Twill": [
+    "Marine Twill": [
       ["assets/renders/blue-twill-main.jpg",   "Front view"],
       ["assets/renders/blue-twill-angle.jpg",  "Rear three-quarter"],
       ["assets/renders/blue-twill-angle2.jpg", "Rear three-quarter, arm"],
@@ -15,7 +15,7 @@
       ["assets/renders/blue-twill-seat.jpg",   "Seat & power outlet"],
       ["assets/renders/blue-twill-niche.jpg",  "Lit shelf niche"]
     ],
-    "Green Velvet": [
+    "Forest Velvet": [
       ["assets/renders/green-velvet-main.jpg",   "Front view"],
       ["assets/renders/green-velvet-angle.jpg",  "Rear three-quarter"],
       ["assets/renders/green-velvet-angle2.jpg", "Rear three-quarter, arm"],
@@ -23,7 +23,7 @@
       ["assets/renders/green-velvet-seat.jpg",   "Seat & power outlet"],
       ["assets/renders/green-velvet-niche.jpg",  "Lit shelf niche"]
     ],
-    "Violet Linen": [
+    "Mulberry Linen": [
       ["assets/renders/violet-linen-main.jpg",   "Front view"],
       ["assets/renders/violet-linen-angle.jpg",  "Rear three-quarter"],
       ["assets/renders/violet-linen-angle2.jpg", "Rear three-quarter, arm"],
