@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="b" cx="30%" cy="22%" r="90%">
+      <stop offset="0" stop-color="#33322f"/><stop offset=".5" stop-color="#242320"/><stop offset="1" stop-color="#161513"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="360" fill="url(#b)"/>
+  <rect width="480" height="360" fill="#000" opacity="0.04"/>
+</svg>

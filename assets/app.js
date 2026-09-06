@@ -33,6 +33,16 @@
     ]
   };
 
+  // Frame finish material swatches (no furniture renders exist for these yet).
+  const FINISHES = {
+    "Natural Oak · wood-look metal": "assets/finishes/natural-oak.svg",
+    "Warm Walnut · wood-look metal": "assets/finishes/warm-walnut.svg",
+    "Matte Black": "assets/finishes/matte-black.svg",
+    "Soft White": "assets/finishes/soft-white.svg",
+    "Brushed Silver": "assets/finishes/brushed-silver.svg",
+    "Satin Brass": "assets/finishes/satin-brass.svg"
+  };
+
   const heroImg = document.getElementById('heroImg');
   const heroThumbs = document.getElementById('heroThumbs');
   const defaultHero = heroImg ? heroImg.getAttribute('src') : '';
@@ -86,7 +96,12 @@
     el.addEventListener('click', () => selectFabric(el))
   );
   document.querySelectorAll('#frameSwatches .swatch').forEach(el =>
-    el.addEventListener('click', () => activate('#frameSwatches .swatch', el, 'frameName'))
+    el.addEventListener('click', () => {
+      activate('#frameSwatches .swatch', el, 'frameName');
+      const src = FINISHES[el.dataset.name];
+      if (src && heroImg) heroImg.src = src;
+      if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
+    })
   );
   document.querySelectorAll('#configs .config').forEach(el =>
     el.addEventListener('click', () => activate('#configs .config', el, 'configName'))
