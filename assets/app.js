@@ -8,7 +8,7 @@
       ["assets/renders/yellow-linen-niche.jpg", "Lit shelf niche"]
     ],
     "Marine Twill": [
-      ["assets/renders/blue-twill-main.jpg",   "Front view"],
+      ["assets/renders/blue-twill-main.jpg",   "Angled view"],
       ["assets/renders/blue-twill-angle.jpg",  "Rear three-quarter"],
       ["assets/renders/blue-twill-angle2.jpg", "Rear three-quarter, arm"],
       ["assets/renders/blue-twill-top.jpg",    "Top view"],
@@ -16,7 +16,7 @@
       ["assets/renders/blue-twill-niche.jpg",  "Lit shelf niche"]
     ],
     "Forest Velvet": [
-      ["assets/renders/green-velvet-main.jpg",   "Front view"],
+      ["assets/renders/green-velvet-main.jpg",   "Angled view"],
       ["assets/renders/green-velvet-angle.jpg",  "Rear three-quarter"],
       ["assets/renders/green-velvet-angle2.jpg", "Rear three-quarter, arm"],
       ["assets/renders/green-velvet-top.jpg",    "Top view"],
@@ -24,7 +24,7 @@
       ["assets/renders/green-velvet-niche.jpg",  "Lit shelf niche"]
     ],
     "Mulberry Linen": [
-      ["assets/renders/violet-linen-main.jpg",   "Front view"],
+      ["assets/renders/violet-linen-main.jpg",   "Angled view"],
       ["assets/renders/violet-linen-angle.jpg",  "Rear three-quarter"],
       ["assets/renders/violet-linen-angle2.jpg", "Rear three-quarter, arm"],
       ["assets/renders/violet-linen-top.jpg",    "Top view"],
