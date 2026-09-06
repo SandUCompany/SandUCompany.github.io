@@ -46,6 +46,7 @@
     align-items:center; justify-content:center; gap:16px; overflow:hidden; padding:22px;
   }
   .hero-img img { width:100%; max-height:520px; object-fit:contain; }
+  .hero-img img.is-config { width:auto; max-width:100%; }
   .hero-thumbs { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
   .hero-thumbs[hidden] { display:none; }
   .hero-thumbs button {

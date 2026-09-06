@@ -53,6 +53,7 @@
     align-items:center; justify-content:center; gap:16px; overflow:hidden; padding:22px;
   }
   .hero-img img { width:100%; max-height:520px; object-fit:contain; }
+  .hero-img img.is-config { width:auto; max-width:100%; }
   .hero-thumbs { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
   .hero-thumbs[hidden] { display:none; }
   .hero-thumbs button {
@@ -145,13 +146,15 @@
 
     <div class="section-label">Configuration</div>
     <div class="configs" id="configs">
-      <button class="config active" data-name="Myron 01 · Social Curve">01</button>
-      <button class="config" data-name="Myron 02 · Companion">02</button>
-      <button class="config" data-name="Myron 03 · Open End">03</button>
-      <button class="config" data-name="Myron 04 · Conversation">04</button>
-      <button class="config" data-name="Myron 05 · Extended">05</button>
+      <button class="config active" data-name="Three Seat Bench" data-img="assets/renders/01_three_seat_bench.png">01</button>
+      <button class="config" data-name="Three Seat + End Table" data-img="assets/renders/02_three_seat_end_table.png">02</button>
+      <button class="config" data-name="Two Seat Bench" data-img="assets/renders/03_two_seat_bench.png">03</button>
+      <button class="config" data-name="Single Seat" data-img="assets/renders/04_single_seats_together.png">04</button>
+      <button class="config" data-name="Two Seat + End Table" data-img="assets/renders/05_two_seat_end_table.png">05</button>
+      <button class="config" data-name="Four Seat Bench" data-img="assets/renders/06_four_seat_bench.png">06</button>
+      <button class="config" data-name="Four Seat Backless Bench" data-img="assets/renders/07_four_seat_backless_bench.png">07</button>
     </div>
-    <div class="swatch-name" id="configName">Myron 01 · Social Curve</div>
+    <div class="swatch-name" id="configName">Three Seat Bench</div>
 
     <div class="section-label">Upholstery</div>
     <div class="swatches" id="fabricSwatches">
@@ -164,14 +167,14 @@
 
     <div class="section-label">Frame Finish</div>
     <div class="swatches" id="frameSwatches">
-      <button class="swatch active" style="background:url(assets/finishes/natural-oak.svg) center/cover" data-name="Natural Oak · wood-look metal"></button>
-      <button class="swatch" style="background:url(assets/finishes/warm-walnut.svg) center/cover" data-name="Warm Walnut · wood-look metal"></button>
-      <button class="swatch" style="background:url(assets/finishes/matte-black.svg) center/cover" data-name="Matte Black"></button>
-      <button class="swatch" style="background:url(assets/finishes/soft-white.svg) center/cover" data-name="Soft White"></button>
-      <button class="swatch" style="background:url(assets/finishes/brushed-silver.svg) center/cover" data-name="Brushed Silver"></button>
-      <button class="swatch" style="background:url(assets/finishes/satin-brass.svg) center/cover" data-name="Satin Brass"></button>
+      <button class="swatch active" style="background:url(assets/finishes/natural-oak.jpg) center/cover" data-name="Natural Oak · Wood-look metal"></button>
+      <button class="swatch" style="background:url(assets/finishes/mocha-walnut.jpg) center/cover" data-name="Mocha Walnut · Wood-look metal"></button>
+      <button class="swatch" style="background:url(assets/finishes/smoked-walnut.jpg) center/cover" data-name="Smoked Walnut · Wood-look metal"></button>
+      <button class="swatch" style="background:url(assets/finishes/matte-black.jpg) center/cover" data-name="Matte Black · Powder coat"></button>
+      <button class="swatch" style="background:url(assets/finishes/soft-ivory.jpg) center/cover" data-name="Soft Ivory · Powder coat"></button>
+      <button class="swatch" style="background:url(assets/finishes/brushed-silver.jpg) center/cover" data-name="Brushed Silver · Powder coat"></button>
     </div>
-    <div class="swatch-name" id="frameName">Natural Oak · wood-look metal</div>
+    <div class="swatch-name" id="frameName">Natural Oak · Wood-look metal</div>
 
     <div class="cta-row">
       <button class="btn primary">Add to Specification</button>
@@ -284,12 +287,12 @@
 
   // Frame finish material swatches (no furniture renders exist for these yet).
   const FINISHES = {
-    "Natural Oak · wood-look metal": "assets/finishes/natural-oak.svg",
-    "Warm Walnut · wood-look metal": "assets/finishes/warm-walnut.svg",
-    "Matte Black": "assets/finishes/matte-black.svg",
-    "Soft White": "assets/finishes/soft-white.svg",
-    "Brushed Silver": "assets/finishes/brushed-silver.svg",
-    "Satin Brass": "assets/finishes/satin-brass.svg"
+    "Natural Oak · Wood-look metal": "assets/finishes/natural-oak.jpg",
+    "Mocha Walnut · Wood-look metal": "assets/finishes/mocha-walnut.jpg",
+    "Smoked Walnut · Wood-look metal": "assets/finishes/smoked-walnut.jpg",
+    "Matte Black · Powder coat": "assets/finishes/matte-black.jpg",
+    "Soft Ivory · Powder coat": "assets/finishes/soft-ivory.jpg",
+    "Brushed Silver · Powder coat": "assets/finishes/brushed-silver.jpg"
   };
 
   const heroImg = document.getElementById('heroImg');
@@ -331,6 +334,7 @@
 
   function selectFabric(el) {
     activate('#fabricSwatches .swatch', el, 'fabricName');
+    if (heroImg) heroImg.classList.remove('is-config');
     const name = el.dataset.name;
     if (RENDERS[name]) {
       if (heroImg) heroImg.src = RENDERS[name][0][0];
@@ -348,12 +352,16 @@
     el.addEventListener('click', () => {
       activate('#frameSwatches .swatch', el, 'frameName');
       const src = FINISHES[el.dataset.name];
-      if (src && heroImg) heroImg.src = src;
+      if (src && heroImg) { heroImg.src = src; heroImg.classList.remove('is-config'); }
       if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
     })
   );
   document.querySelectorAll('#configs .config').forEach(el =>
-    el.addEventListener('click', () => activate('#configs .config', el, 'configName'))
+    el.addEventListener('click', () => {
+      activate('#configs .config', el, 'configName');
+      if (el.dataset.img && heroImg) { heroImg.src = el.dataset.img; heroImg.classList.add('is-config'); }
+      if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
+    })
   );
 
   // If a material with renders starts active, show its gallery on load.

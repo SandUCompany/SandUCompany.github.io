@@ -35,12 +35,12 @@
 
   // Frame finish material swatches (no furniture renders exist for these yet).
   const FINISHES = {
-    "Natural Oak · wood-look metal": "assets/finishes/natural-oak.svg",
-    "Warm Walnut · wood-look metal": "assets/finishes/warm-walnut.svg",
-    "Matte Black": "assets/finishes/matte-black.svg",
-    "Soft White": "assets/finishes/soft-white.svg",
-    "Brushed Silver": "assets/finishes/brushed-silver.svg",
-    "Satin Brass": "assets/finishes/satin-brass.svg"
+    "Natural Oak · Wood-look metal": "assets/finishes/natural-oak.jpg",
+    "Mocha Walnut · Wood-look metal": "assets/finishes/mocha-walnut.jpg",
+    "Smoked Walnut · Wood-look metal": "assets/finishes/smoked-walnut.jpg",
+    "Matte Black · Powder coat": "assets/finishes/matte-black.jpg",
+    "Soft Ivory · Powder coat": "assets/finishes/soft-ivory.jpg",
+    "Brushed Silver · Powder coat": "assets/finishes/brushed-silver.jpg"
   };
 
   const heroImg = document.getElementById('heroImg');
@@ -82,6 +82,7 @@
 
   function selectFabric(el) {
     activate('#fabricSwatches .swatch', el, 'fabricName');
+    if (heroImg) heroImg.classList.remove('is-config');
     const name = el.dataset.name;
     if (RENDERS[name]) {
       if (heroImg) heroImg.src = RENDERS[name][0][0];
@@ -99,12 +100,16 @@
     el.addEventListener('click', () => {
       activate('#frameSwatches .swatch', el, 'frameName');
       const src = FINISHES[el.dataset.name];
-      if (src && heroImg) heroImg.src = src;
+      if (src && heroImg) { heroImg.src = src; heroImg.classList.remove('is-config'); }
       if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
     })
   );
   document.querySelectorAll('#configs .config').forEach(el =>
-    el.addEventListener('click', () => activate('#configs .config', el, 'configName'))
+    el.addEventListener('click', () => {
+      activate('#configs .config', el, 'configName');
+      if (el.dataset.img && heroImg) { heroImg.src = el.dataset.img; heroImg.classList.add('is-config'); }
+      if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
+    })
   );
 
   // If a material with renders starts active, show its gallery on load.
