@@ -100,7 +100,7 @@
     el.addEventListener('click', () => {
       activate('#frameSwatches .swatch', el, 'frameName');
       const src = FINISHES[el.dataset.name];
-      if (src && heroImg) { heroImg.src = src; heroImg.classList.remove('is-config'); }
+      if (src && heroImg) { heroImg.src = src; heroImg.classList.add('is-config'); }
       if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
     })
   );
