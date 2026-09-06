@@ -77,9 +77,21 @@
     });
   }
 
+  const heroWrap = document.querySelector('.hero-img');
+
+  // mode: 'photo' (upholstery renders), 'config' (flush white), 'finish' (framed tile)
+  function setHeroMode(mode) {
+    if (heroImg) {
+      heroImg.classList.toggle('is-config', mode === 'config');
+      heroImg.classList.toggle('is-finish', mode === 'finish');
+    }
+    if (heroWrap) heroWrap.classList.toggle('flush', mode === 'config');
+    if (mode !== 'photo' && heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
+  }
+
   function selectFabric(el) {
     activate('#fabricSwatches .swatch', el, 'fabricName');
-    if (heroImg) heroImg.classList.remove('is-config');
+    setHeroMode('photo');
     const name = el.dataset.name;
     if (RENDERS[name]) {
       if (heroImg) heroImg.src = RENDERS[name][0][0];
@@ -97,15 +109,13 @@
     el.addEventListener('click', () => {
       activate('#frameSwatches .swatch', el, 'frameName');
       const src = FINISHES[el.dataset.name];
-      if (src && heroImg) { heroImg.src = src; heroImg.classList.add('is-config'); }
-      if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
+      if (src && heroImg) { heroImg.src = src; setHeroMode('finish'); }
     })
   );
   document.querySelectorAll('#configs .config').forEach(el =>
     el.addEventListener('click', () => {
       activate('#configs .config', el, 'configName');
-      if (el.dataset.img && heroImg) { heroImg.src = el.dataset.img; heroImg.classList.add('is-config'); }
-      if (heroThumbs) { heroThumbs.innerHTML = ''; heroThumbs.hidden = true; }
+      if (el.dataset.img && heroImg) { heroImg.src = el.dataset.img; setHeroMode('config'); }
     })
   );
 
